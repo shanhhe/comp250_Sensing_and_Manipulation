@@ -1,6 +1,6 @@
-Authors: Eddie Edwards (eddie.edwards@ucl.ac.uk), Dimitrios Kanoulas, Luke Beddow, Denis Hadjivelichkov
+Authors: Eddie Edwards (eddie.edwards@ucl.ac.uk), Kefeng Huang, Bowie (Heiyin) Wong, Dimitrios Kanoulas, Luke Beddow, Denis Hadjivelichkov
 
-Description: This package forms the base ROS workspace for the module COMP0129: Robotic Sensing, Manipulation and Interaction.
+Description: This package forms the base ROS workspace for the module COMP0250 (formerly COMP0129): Robotic Sensing, Manipulation and Interaction.
 
 ## Pre-Requisites
 ```bash
@@ -14,8 +14,8 @@ Gazebo physics simluator is also needed (http://gazebosim.org/). This can be ins
 
 ## Installation
 ```bash
-> git clone --recurse-submodules https://github.com/COMP0129-UCL/comp0129_s24_robot.git
-> cd comp0129_s24_robot
+> git clone --recurse-submodules https://github.com/surgical-vision/comp0250_s25_labs.git
+> cd comp0250_s24_robot
 > git submodule update --init --recursive
 > catkin config --extend /opt/ros/${ROS_DISTRO} --cmake-args -DCMAKE_BUILD_TYPE=Release
 > catkin build
@@ -52,4 +52,4 @@ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS INFORMATION AND/OR
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-Copyright (C) 2019-2024 Dimitrios Kanoulas except where specified
+Copyright (C) 2019-2024 Dimitrios Kanoulas and Eddie Edwards except where specified
