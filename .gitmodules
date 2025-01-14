@@ -1,9 +1,9 @@
 [submodule "src/panda_moveit_config"]
 	path = src/panda_moveit_config
-	url = https://github.com/COMP0129-S22/panda_moveit_config.git
+	url = https://github.com/COMP0129-UCL/panda_moveit_config.git
 [submodule "src/panda_description"]
 	path = src/panda_description
-	url = https://github.com/COMP0129-S22/panda_description.git
+	url = https://github.com/COMP0129-UCL/panda_description.git
 [submodule "src/realsense_gazebo_plugin"]
 	path = src/realsense_gazebo_plugin
 	url = https://github.com/RPL-CS-UCL/realsense_gazebo_plugin.git
