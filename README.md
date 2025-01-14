@@ -4,36 +4,36 @@ Description: This package forms the base ROS workspace for the module COMP0250 (
 
 ## Pre-Requisites
 ```bash
-> sudo apt install ros-noetic-franka-ros ros-noetic-libfranka
+sudo apt install ros-noetic-franka-ros ros-noetic-libfranka
 ```
 Gazebo physics simluator is also needed (http://gazebosim.org/). This can be installed and then run with:
 ```bash
-> curl -sSL http://get.gazebosim.org | sh
-> gazebo
+curl -sSL http://get.gazebosim.org | sh
+gazebo
 ```
 
 ## Installation
 ```bash
-> git clone --recurse-submodules https://github.com/surgical-vision/comp0250_s25_labs.git
-> cd comp0250_s25_labs
-> git submodule update --init --recursive
-> catkin config --extend /opt/ros/${ROS_DISTRO} --cmake-args -DCMAKE_BUILD_TYPE=Release
-> catkin build
+git clone --recurse-submodules https://github.com/surgical-vision/comp0250_s25_labs.git
+cd comp0250_s25_labs
+git submodule update --init --recursive
+catkin config --extend /opt/ros/${ROS_DISTRO} --cmake-args -DCMAKE_BUILD_TYPE=Release
+catkin build
 ```
 
 ## Run Panda robot Gazebo and rviz
 ```bash
-> source devel/setup.bash
-> roslaunch panda_description description.launch
+source devel/setup.bash
+roslaunch panda_description description.launch
 ```
 
 ## Package Preparation (not to be ran by students):
 ```bash
-> mkdir src
-> git submodule add https://github.com/COMP0129-UCL/panda_moveit_config.git src/panda_moveit_config
-> git submodule add https://github.com/COMP0129-UCL/panda_description.git src/panda_description
-> git submodule add https://github.com/RPL-CS-UCL/realsense_gazebo_plugin.git src/realsense_gazebo_plugin 
-> git submodule add https://github.com/RPL-CS-UCL/rpl_panda_with_rs.git src/rpl_panda_with_rs
+mkdir src
+git submodule add https://github.com/COMP0129-UCL/panda_moveit_config.git src/panda_moveit_config
+git submodule add https://github.com/COMP0129-UCL/panda_description.git src/panda_description
+git submodule add https://github.com/RPL-CS-UCL/realsense_gazebo_plugin.git src/realsense_gazebo_plugin 
+git submodule add https://github.com/RPL-CS-UCL/rpl_panda_with_rs.git src/rpl_panda_with_rs
 ```
 
 ## License
