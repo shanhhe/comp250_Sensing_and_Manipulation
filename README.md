@@ -15,7 +15,7 @@ Gazebo physics simluator is also needed (http://gazebosim.org/). This can be ins
 ## Installation
 ```bash
 > git clone --recurse-submodules https://github.com/surgical-vision/comp0250_s25_labs.git
-> cd comp0250_s24_robot
+> cd comp0250_s25_labs
 > git submodule update --init --recursive
 > catkin config --extend /opt/ros/${ROS_DISTRO} --cmake-args -DCMAKE_BUILD_TYPE=Release
 > catkin build
