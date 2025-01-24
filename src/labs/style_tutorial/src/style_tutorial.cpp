@@ -46,8 +46,7 @@ StyleTutorial::StyleTutorial (ros::NodeHandle &nh):
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-void
-StyleTutorial::cloud_cb_one (const pcl::PCLPointCloud2ConstPtr& cloud_input)
+void StyleTutorial::cloud_cb_one (const pcl::PCLPointCloud2ConstPtr& cloud_input)
 {
   // Create container variables
   pcl::PCLPointCloud2 cloud_filtered;
@@ -64,8 +63,7 @@ StyleTutorial::cloud_cb_one (const pcl::PCLPointCloud2ConstPtr& cloud_input)
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-void
-StyleTutorial::cloud_cb_two (const sensor_msgs::PointCloud2ConstPtr& cloud_input_msg)
+void StyleTutorial::cloud_cb_two (const sensor_msgs::PointCloud2ConstPtr& cloud_input_msg)
 {
   // Container for original & filtered data
   pcl::PCLPointCloud2* cloud = new pcl::PCLPointCloud2;
@@ -91,18 +89,12 @@ StyleTutorial::cloud_cb_two (const sensor_msgs::PointCloud2ConstPtr& cloud_input
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-void
-StyleTutorial::PubFilteredPC (ros::Publisher &pc_pub, pcl::PCLPointCloud2 &pc)
-{
+void StyleTutorial::PubFilteredPC (ros::Publisher &pc_pub, pcl::PCLPointCloud2 &pc)
   // Publish the data
   pc_pub.publish (pc);
-}
 
 ////////////////////////////////////////////////////////////////////////////////
-void
-StyleTutorial::PubFilteredPCmsg (ros::Publisher &pc_pub,
+void StyleTutorial::PubFilteredPCmsg (ros::Publisher &pc_pub,
                                sensor_msgs::PointCloud2 &pc)
-{
   // Publish the data
   pc_pub.publish (pc);
-}

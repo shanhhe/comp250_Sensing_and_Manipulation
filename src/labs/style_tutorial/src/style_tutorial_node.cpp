@@ -35,8 +35,7 @@
 #include <style_tutorial/style_tutorial.h>
 
 ////////////////////////////////////////////////////////////////////////////////
-int
-main (int argc, char** argv)
+int main (int argc, char** argv)
 {
   /**
     * The ros::init() function needs to see argc and argv so that it can perform
@@ -48,17 +47,17 @@ main (int argc, char** argv)
     * You must call one of the versions of ros::init () before using any other
     * part of the ROS system.
     */
-  ros::init (argc, argv, "pcl_tutorial_node");
+  ros::init(argc, argv, "pcl_tutorial_node");
   
   /**
     * NodeHandle is the main access point to communications with the ROS system.
     * The first NodeHandle constructed will fully initialize this node, and the last
     * NodeHandle destructed will close down the node.
     */
-  ros::NodeHandle nh ("~");
+  ros::NodeHandle nh("~");
   
   // Create a Lab1 object
-  StyleTutorial pcl_tutorial (nh);
+  StyleTutorial pcl_tutorial(nh);
 
   // Create a ROS subscriber for the input point cloud
   ros::Subscriber sub_one =
