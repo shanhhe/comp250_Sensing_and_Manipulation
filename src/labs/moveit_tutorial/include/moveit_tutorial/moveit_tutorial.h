@@ -56,6 +56,7 @@
 #include <moveit_tutorial/set_arm.h>
 #include <moveit_tutorial/set_gripper.h>
 #include <moveit_tutorial/add_collision.h>
+#include <moveit_tutorial/remove_collision.h>
 
 /** \brief Class advertising MoveIt! ROS services
   *
@@ -117,6 +118,11 @@ public: // set all following functions/variables to public access
     *
     * \return true if moved to target position 
     */
+
+  bool
+  removeCollisionCallback(moveit_tutorial::remove_collision::Request &request,
+    moveit_tutorial::remove_collision::Response &response);
+
   bool 
   moveArm(geometry_msgs::Pose target_pose);
 
@@ -144,6 +150,10 @@ public: // set all following functions/variables to public access
   
   /* Variables */
 
+  void
+  removeCollision(std::string object_name);
+
+
   /** \brief Define some useful constant values. */
   std::string base_frame_ = "panda_link0";
   double gripper_open_ = 80e-3;
@@ -160,6 +170,8 @@ public: // set all following functions/variables to public access
 
   /** \brief  Server for advertising add_collision_srv_  service. */
   ros::ServiceServer add_collision_srv_;
+
+  ros::ServiceServer remove_collision_srv_;
 
   /** \brief MoveIt interface to move groups to seperate the arm and the gripper,
     * these are defined in urdf. */

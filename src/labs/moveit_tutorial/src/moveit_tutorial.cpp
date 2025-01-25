@@ -53,11 +53,24 @@ SrvClass::SrvClass(ros::NodeHandle &nh)
     &SrvClass::setGripperCallback, this);
   add_collision_srv_ = nh_.advertiseService(service_ns + "/add_collision",
     &SrvClass::addCollisionCallback, this);
+  remove_collision_srv_ = nh_.advertiseService(service_ns + "/remove_collision",
+    &SrvClass::removeCollisionCallback, this);
 
   // print to the terminal
   ROS_INFO("MoveIt! services initialisation finished, ready to go");
 }
 
+
+bool
+SrvClass::removeCollisionCallback(moveit_tutorial::remove_collision::Request &request,
+  moveit_tutorial::remove_collision::Response &response)
+{
+  removeCollision(request.object_name);
+
+  response.success = true;
+
+  return true;
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 bool 
@@ -91,7 +104,11 @@ SrvClass::addCollisionCallback(moveit_tutorial::add_collision::Request &request,
   moveit_tutorial::add_collision::Response &response)
 {
   // TODO: use the addCollisionObject function
-
+  std::string object_name = request.object_name;
+  geometry_msgs::Point centre = request.centre;
+  geometry_msgs::Vector3 dimensions = request.dimensions;
+  geometry_msgs::Quaternion orientation = request.orientation;
+  addCollisionObject(object_name, centre, dimensions, orientation);
   response.success = true;
 
   return true;
@@ -154,6 +171,18 @@ SrvClass::moveGripper(float width)
   hand_group_.move();
 
   return success;
+}
+
+void
+SrvClass::removeCollision(std::string object_name)
+{
+  moveit_msgs::CollisionObject collision_object;
+  std::vector<moveit_msgs::CollisionObject> object_vector;
+  collision_object.id = object_name;
+  collision_object.operation = collision_object.REMOVE;
+  object_vector.push_back(collision_object);
+  planning_scene_interface_.applyCollisionObjects(object_vector);
+  return;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
