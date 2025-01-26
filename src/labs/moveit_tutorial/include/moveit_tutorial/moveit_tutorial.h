@@ -57,6 +57,7 @@
 #include <moveit_tutorial/set_gripper.h>
 #include <moveit_tutorial/add_collision.h>
 #include <moveit_tutorial/remove_collision.h>
+#include <moveit_tutorial/pick.h>
 
 /** \brief Class advertising MoveIt! ROS services
   *
@@ -123,6 +124,12 @@ public: // set all following functions/variables to public access
   removeCollisionCallback(moveit_tutorial::remove_collision::Request &request,
     moveit_tutorial::remove_collision::Response &response);
 
+  
+  bool 
+  pickCallback(moveit_tutorial::pick::Request &request,
+    moveit_tutorial::pick::Response &response);
+
+
   bool 
   moveArm(geometry_msgs::Pose target_pose);
 
@@ -153,6 +160,12 @@ public: // set all following functions/variables to public access
   void
   removeCollision(std::string object_name);
 
+  void 
+  pick(geometry_msgs::Point grasp_point);
+
+  // void 
+  // pick(geometry_msgs::Point grasp_point, float roll, float pitch, float yaw);
+
 
   /** \brief Define some useful constant values. */
   std::string base_frame_ = "panda_link0";
@@ -172,6 +185,8 @@ public: // set all following functions/variables to public access
   ros::ServiceServer add_collision_srv_;
 
   ros::ServiceServer remove_collision_srv_;
+
+  ros::ServiceServer pick_srv_;
 
   /** \brief MoveIt interface to move groups to seperate the arm and the gripper,
     * these are defined in urdf. */

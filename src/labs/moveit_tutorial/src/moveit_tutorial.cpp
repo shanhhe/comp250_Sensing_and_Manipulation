@@ -55,6 +55,8 @@ SrvClass::SrvClass(ros::NodeHandle &nh)
     &SrvClass::addCollisionCallback, this);
   remove_collision_srv_ = nh_.advertiseService(service_ns + "/remove_collision",
     &SrvClass::removeCollisionCallback, this);
+  pick_srv_ = nh_.advertiseService(service_ns + "/pick",
+    &SrvClass::pickCallback, this);
 
   // print to the terminal
   ROS_INFO("MoveIt! services initialisation finished, ready to go");
@@ -66,6 +68,19 @@ SrvClass::removeCollisionCallback(moveit_tutorial::remove_collision::Request &re
   moveit_tutorial::remove_collision::Response &response)
 {
   removeCollision(request.object_name);
+
+  response.success = true;
+
+  return true;
+}
+
+
+bool
+SrvClass::pickCallback(moveit_tutorial::pick::Request &request,
+  moveit_tutorial::pick::Response &response)
+{
+  pick(request.grasp_point);
+
 
   response.success = true;
 
@@ -184,6 +199,44 @@ SrvClass::removeCollision(std::string object_name)
   planning_scene_interface_.applyCollisionObjects(object_vector);
   return;
 }
+
+
+void
+SrvClass::pick(geometry_msgs::Point grasp_point)
+{
+  geometry_msgs::Pose grasp_pose;
+  grasp_pose.position = grasp_point;
+
+  double yaw = M_PI / 4;
+  double pitch = M_PI;
+  double roll = 0;
+  ROS_INFO("yaw: %f", yaw);
+  tf2::Quaternion quaternion;
+  quaternion.setEulerZYX(yaw, pitch, roll);
+  grasp_pose.orientation = tf2::toMsg(quaternion);
+
+  bool success1 = moveGripper(0.5);
+  bool success2 = moveArm(grasp_pose);
+  bool success3 = moveGripper(0);
+  grasp_point.z += 0.4;
+  bool success4 = moveArm(grasp_pose);
+  // ROS_INFO("Grasp point coordinates: x=%f, y=%f, z=%f", grasp_point.x, grasp_point.y, grasp_point.z);
+}
+
+// void
+// SrvClass::pick(geometry_msgs::Point grasp_point, float roll, float pitch, float yaw)
+// {
+//   geometry_msgs::Pose grasp_pose;
+//   grasp_pose.position = grasp_point;
+
+//   tf2::Quaternion quaternion;
+//   quaternion.setEulerZYX(yaw, pitch, roll);
+//   grasp_pose.orientation = tf2::toMsg(quaternion);
+
+//   bool success1 = moveArm(grasp_pose);
+//   bool success2 = moveGripper(0);
+//   // ROS_INFO("Grasp point coordinates: x=%f, y=%f, z=%f", grasp_point.x, grasp_point.y, grasp_point.z);
+// }
 
 ////////////////////////////////////////////////////////////////////////////////
 void 

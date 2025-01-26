@@ -64,6 +64,7 @@ add_service_files(
   set_gripper.srv
   add_collision.srv
   remove_collision.srv
+  pick.srv
 )
 
 ## Generate actions in the 'action' folder
