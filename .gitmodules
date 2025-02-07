@@ -10,3 +10,6 @@
 [submodule "src/rpl_panda_with_rs"]
 	path = src/rpl_panda_with_rs
 	url = https://github.com/RPL-CS-UCL/rpl_panda_with_rs.git
+[submodule "src/cw1_world_spawner"]
+	path = src/cw1_world_spawner
+	url = https://github.com/COMP0129-UCL/cw1_world_spawner.git
