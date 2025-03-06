@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>cw1_team_x</name> <!-- change your team name here! -->
+  <name>cw1_team_18</name> <!-- change your team name here! -->
   <version>0.0.0</version>
   <description>
   A package template for the cw1 solution. The name should be changed to the team 
-  number, for example team 3 would change the name to cw1_team_3.
+  number, for example team 18 would change the name to cw1_team_18.
   </description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
